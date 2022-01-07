@@ -163,26 +163,26 @@
       const count = document.querySelectorAll('#count')
       let tempCount = 1
 
-//       buttonCart.forEach(button => {
-//         button.addEventListener('click', () => {
-//           if(button.innerText === '+') {
-//             tempCount++
-//             count.forEach(count => {
-//               count.innerText = String(tempCount)
-//             })
-//           } else if (button.innerText === '-') {
-//             tempCount--
-//             count.forEach(count => {
-//               count.innerText = String(tempCount)
-//             })
-//           }
+      buttonCart.forEach(button => {
+        button.addEventListener('click', () => {
+          if(button.innerText === '+') {
+            tempCount++
+            count.forEach(count => {
+              count.innerText = String(tempCount)
+            })
+          } else if (button.innerText === '-') {
+            tempCount--
+            count.forEach(count => {
+              count.innerText = String(tempCount)
+            })
+          }
 
-//           if (tempCount < 0) {
-//             tempCount = 0
-//             count.forEach(count => {
-//               count.innerText = String(tempCount)
-//             })
-//           }
+          if (tempCount < 0) {
+            tempCount = 0
+            count.forEach(count => {
+              count.innerText = String(tempCount)
+            })
+          }
 
         })
       })
