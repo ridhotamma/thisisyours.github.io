@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>This is Yours</title>
+  </head>
+  <body>
+    <div class="app-bar-pink" id="appbar">
+      <div class="app-left">
+        <a href="./index.html"><img src="./img/logo.png" alt="logo png" width="125px"></a>
+        <a href="./products/index.html">Product</a>
+        <a href="./about.html">About</a>
+        <a href="./blog/index.html">Blog</a>
+      </div>
+      <div class="app-middle">
+        <a href="./index.html"><img src="./img/logo.png" alt="logo png" width="125px" class="mobile"></a>
+      </div>
+      <div class="app-right">
+        <a href="#">
+          <img src="./img/profile.png" width="30px" alt="" id="profile">
+        </a>
+        <a href="./login.html" class="secondary-button mx-3 web" id="login-button">Log In</a>
+        <a href="./cart.html">
+          <img src="./img/cart.png" alt="cart png" class="cart" id="cart">
+        </a>
+        <img src="./img/menu.png" alt="menu png" class="menu">
+      </div>
+    </div>
+
+    <div id="payment-status" class="d-none" style="position: fixed; height: 100vh; background-color: white; width: 100%; z-index: 999; display: flex; justify-content: center; flex-direction: column; align-items: center;">
+      <div class="spinner-border text-danger" role="status" style="width: 4em; height: 4em;">
+      </div>
+      <br>
+      <p>Menyelesaikan Pembayaran</p>
+    </div>
+
+    <div id="payment-complete" class="d-none" style="position: fixed; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 999;">
+       <div class="d-flex justify-content-center align-items-center flex-column p-4" style="  box-shadow: 1px 1px 20px 2px #aaaaaa; background-color: white;">
+        <p>Terima Kasih Telah Bertransaksi</p>
+        <button class="primary-button" id="complete-button">Ok</button>
+       </div>
+    </div>
+
+     <!-- menu for mobile -->
+     <div class="mobile-menu shadow-bottom mobile-visible">
+      <img src="./img/exit.png" alt="exit" id="exit">
+      <div class="mobile-menu-items">
+        <div class="mobile-menu-item">
+          <a href="./products/index.html" style="color: black;">Product</a>
+        </div>
+        <hr>
+        <div class="mobile-menu-item">
+          <a href="./about.html" style="color: black;">About</a>
+        </div>
+        <hr>
+        <div class="mobile-menu-item">
+          <a href="./blog/index.html" style="color: black;">Blog</a>
+        </div>
+        <hr>
+        <div class="mobile-menu-item is-login mb-4">
+          <a href="#" style="color: black;">Profil</a>
+        </div>
+        <div class="mobile-menu-item is-login">
+          <a href="./login.html" style="color: red;" id="login-button-mobile">Log out</a>
+        </div>
+      </div>
+    </div>
+    <!-- end of menu for mobile -->
+
+    <img src="./img/daun kanan.png" alt="leaf right" style="position: absolute; width: 200px; right: 0; top: 20%; z-index: -1;">
+    <img src="./img/daun kiri.png" alt="leaf right" style="position: absolute; width: 100px; top: 180%; z-index: -1;">
+
+    <!-- checkout section -->
+    <div class="checkout-wrapper">
+        <div class="checkout-text">
+            <h3 class="checkout-title">Checkout</h3>
+            <p class="web">Detail Penagihan</p>
+        </div>
+        <div class="container d-flex align-items-start checkout-content-wrapper">
+            <form class="checkout-form-wrapper">
+                <hr class="web">
+                <div class="checkout-input-inline">
+                    <div class="input-wrapper">
+                        <label for="nama-depan">Nama Depan</label>
+                        <input type="text" class="checkout-input" id="first-name">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="nama-belakang">Nama Belakang</label>
+                        <input type="text" class="checkout-input" id="last-name">
+                    </div>
+                </div>
+                <div class="checkout-input-full">
+                    <div class="input-wrapper">
+                        <label for="alamat">Alamat</label>
+                        <textarea class="text-area" placeholder="Nomer rumah dan nama jalan" id="alamat"></textarea>
+                    </div>
+                </div>
+                <div class="checkout-input-full">
+                    <div class="input-wrapper">
+                        <label for="provinsi">Provinsi</label>
+                        <input type="text" placeholder="Pilih Provinsi" id="provinsi">
+                    </div>
+                </div>
+                <div class="checkout-input-full">
+                    <div class="input-wrapper">
+                        <label for="kota">Kota</label>
+                        <input type="text" placeholder="Pilih Kota" id="kota">
+                    </div>
+                </div>
+                <div class="checkout-input-full">
+                    <div class="input-wrapper">
+                        <label for="kecamatan">Kecamatan</label>
+                        <input type="text" placeholder="Pilih Kecamatan" id="kecamatan">
+                    </div>
+                </div>
+                <div class="checkout-input-inline">
+                    <div class="input-wrapper">
+                        <label for="kode-pos">Kode Pos</label>
+                        <input type="text" id="kodepos">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="Nomor-telepon">Nomor Telepon</label>
+                        <input type="text" id="phone">
+                    </div>
+                </div>
+                <div class="checkout-input-full">
+                    <div class="input-wrapper">
+                        <label for="email">Email</label>
+                        <input type="text" placeholder="Masukan Email" id="email">
+                    </div>
+                </div>
+                <div class="checkout-input-full">
+                    <div class="input-wrapper">
+                        <label for="catatan-pengiriman">Catatan Pengiriman (Opsional)</label>
+                        <textarea class="text-area catatan" placeholder="Catatan untuk pesanan anda, misal : Catatan khusus pengiriman" id="catatan"></textarea>
+                    </div>
+                </div>
+                <button class="primary-button mobile mt-4" id="buy-button-mobile" style="width: 100%;">Beli</button>
+              </form>
+            <div class="pesanan-details">
+
+            </div>
+        </div>
+    </div>
+    <!-- end of checkout section -->
+
+    <div class="footer">
+      <div class="footer-items">
+        <div class="footer-left">
+          <p><b>Information</b></p>
+          <a href="./privacy-policy.html">
+            <p>Privacy Policy</p>
+          </a>
+          <a href="./terms-and-conditions.html">
+            <p>Terms And Condition</p>
+          </a>
+        </div>
+        <div class="footer-middle">
+          <p><b>Payment Method</b></p>
+          <p>Transfer Bank (Virtual Account)</p>
+          <img src="./img/bca.png" alt="" width="70px" class="footer-img">
+          <p>E-Wallet</p>
+          <img src="./img/shopeepay.png" alt="" width="70px" class="footer-img">
+        </div>
+        <div class="footer-right">
+          <p><b>Customer Service</b></p>
+          <p>cs@thisisyour.com</p>
+        </div>
+      </div>
+      <p class="copyright">Copyright © 2022 This Is Your owned by Adeline Widyaning Raras.
+        All rights reserved.</p>
+    </div>
+    <script src="./js/app.js"></script>
+    <script src="./js/cart.js"></script>
+    <script>
+      if(userToken === null) {
+            history.back()
+      }
+
+      const pesananDetails = document.querySelector('.pesanan-details')
+
+      if(localStorage.getItem('product-title') && localStorage.getItem('product-price')) {
+        pesananDetails.innerHTML += `
+          <div class="pesanan-wrapper">
+                        <p><b>Pesanan Anda</b></p>
+                        <p class="small">Produk</p>
+                        <hr>
+                        <div class="pesanan-list">
+                            <div class="pesanan-item">
+                                <img src="./img/products/03 cream.png" alt="">
+                                <p><i>${localStorage.getItem('product-title')}</i></p>
+                                <p class="red-color">${localStorage.getItem('product-price')}</p>
+                            </div> 
+                        </div>
+                        <div class="subtotal">
+                            <div class="subtotal-item">
+                                <p>subtotal</p>
+                                <p>${localStorage.getItem('product-price')}</p>
+                            </div>
+                            <hr>
+                            <div class="subtotal-item">
+                                <p><b>Total</b></p>
+                                <p>${localStorage.getItem('product-price')}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pembayaran-wrapper">
+                    <h3 class="pembayaran-title">Pembayaran</h3>
+                    <div class="pembayaran">
+                        <div class="pembayaran-item">
+                            <input type="radio" name="bca" id="bca">
+                            <img src="./img/bca.png" alt="">
+                        </div>
+                        <div class="pembayaran-item">
+                            <input type="radio" name="bca" id="bca">
+                            <img src="./img/shopeepay.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-5"><b>Detail Penagihan</b></p>
+                <hr>
+                <button class="primary-button mt-5 web" id="buy-button" style="width: 100%;;">Bayar</button>
+          `
+      }
+
+      const firstName = document.querySelector('#first-name')
+      const lastName = document.querySelector('#last-name')
+      const alamat = document.querySelector('#alamat')
+      const provinsi = document.querySelector('#provinsi')
+      const kota = document.querySelector('#kota')
+      const kecamatan = document.querySelector('#kecamatan')
+      const kodepos = document.querySelector('#kodepos')
+      const phone = document.querySelector('#phone')
+      const email = document.querySelector('#email')
+      const catatan = document.querySelector('#catatan')
+
+      const paymentStatus = document.querySelector('#payment-status')
+      const paymentComplete = document.querySelector('#payment-complete')
+      const completeButton = document.querySelector('#complete-button')
+      
+      let autocomplete = false
+
+      document.addEventListener('keydown', function (event) {
+        event.preventDefault();
+        if ((event.ctrlKey && event.key === 's') || (event.metaKey && event.key === 's')) {
+          autocomplete = true
+          firstName.value = "Gusti"
+          lastName.value = "karnawan"
+          alamat.value = "Manggarai"
+          provinsi.value = "DKI Jakarta"
+          kota.value = "Jakarta Barat"
+          kecamatan.value = "Pondok Pinang"
+          kodepos.value = "12280"
+          phone.value = "+6285166778888"
+          email.value = "gusti@ui.co.id"
+          catatan.value = "Taro barang di depan rumah"
+        }
+        if (event.ctrlKey && event.key === 'd') {
+          autocomplete = false
+          firstName.value = ""
+          lastName.value = ""
+          alamat.value = ""
+          provinsi.value = ""
+          kota.value = ""
+          kecamatan.value = ""
+          kodepos.value = ""
+          phone.value = ""
+          email.value = ""
+          catatan.value = ""
+        }
+    });
+
+      const buyButton = document.querySelector('#buy-button')
+      const buyButtonMobile = document.querySelector('#buy-button-mobile')
+
+      let count = 0
+
+      completeButton.addEventListener('click', () => {
+        paymentComplete.classList.add('d-none')
+        window.location.href = 'http://localhost:5501'
+      })
+
+      const paymentAction = () => {
+        if(autocomplete) {
+          paymentStatus.classList.remove('d-none')
+          let timer = setInterval(() => { 
+            counting()
+          }, 500)
+
+        const counting = () => {
+          count++
+          console.log(count)
+          if(count % 5 == 0) {
+            paymentStatus.classList.add('d-none')
+            paymentComplete.classList.remove('d-none')
+            clearInterval(timer)
+          }
+        }
+       } else {
+         alert('harap lengkapi formulir')
+       }
+    }
+      buyButton.addEventListener('click', () => {
+          paymentAction()
+    })         
+      buyButtonMobile.addEventListener('click', (e) => {
+          e.preventDefault()
+          paymentAction()
+      })
+    </script>
+  </body>
+</html>
