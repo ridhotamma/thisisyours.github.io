@@ -13,4 +13,5 @@ productButton.addEventListener('click', () => {
     localStorage.setItem('product-title', productTitle.innerText)
     localStorage.setItem('product-price', productPrice.innerText)
     localStorage.setItem('product-img', imgArrayText)
+    localStorage.setItem('product-qty', Number(1))
 })

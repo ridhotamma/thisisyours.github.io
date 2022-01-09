@@ -642,7 +642,7 @@ a, li {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    height: 70vh;
+    height: 400px;
 }
 
 .custom-control {
@@ -1263,7 +1263,7 @@ input[type='radio'] {
     .custom-form {
         justify-content: flex-start;
         padding: 20px;
-        height: 50vh;
+        height: 400px;
     }
 
     .fp-title, .fp-subtitle {

@@ -174,7 +174,6 @@
         All rights reserved.</p>
     </div>
     <script src="./js/app.js"></script>
-    <script src="./js/cart.js"></script>
     <script>
       if(userToken === null) {
             history.back()
@@ -244,35 +243,15 @@
       
       let autocomplete = false
 
-      document.addEventListener('keydown', function (event) {
-        event.preventDefault();
-        if ((event.ctrlKey && event.key === 's') || (event.metaKey && event.key === 's')) {
-          autocomplete = true
-          firstName.value = "Gusti"
-          lastName.value = "karnawan"
-          alamat.value = "Manggarai"
-          provinsi.value = "DKI Jakarta"
-          kota.value = "Jakarta Barat"
-          kecamatan.value = "Pondok Pinang"
-          kodepos.value = "12280"
-          phone.value = "+6285166778888"
-          email.value = "gusti@ui.co.id"
-          catatan.value = "Taro barang di depan rumah"
-        }
-        if (event.ctrlKey && event.key === 'd') {
-          autocomplete = false
-          firstName.value = ""
-          lastName.value = ""
-          alamat.value = ""
-          provinsi.value = ""
-          kota.value = ""
-          kecamatan.value = ""
-          kodepos.value = ""
-          phone.value = ""
-          email.value = ""
-          catatan.value = ""
-        }
-    });
+      document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', () => {
+          if(firstName.value !== '' && lastName !== '' && alamat !== '' && provinsi !== '' && kota !== '' && kecamatan !== '' && kodepos !== '' && phone !== '' && email !== '' && catatan !== '') {
+            autocomplete = true
+          } else {
+            autocomplete = false
+          }
+        })
+      })
 
       const buyButton = document.querySelector('#buy-button')
       const buyButtonMobile = document.querySelector('#buy-button-mobile')

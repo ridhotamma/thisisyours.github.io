@@ -63,7 +63,7 @@
                 <div id="container-items" class="col-lg-8 col-sm-12">
                     <div class="row-head">
                         <div class="row-data">
-                            <input type="checkbox" style="margin-right: 10px;">
+                            <input type="checkbox" style="margin-right: 10px;" id="button-check-all">
                             <span>Pilih Semua</span>
                         </div>
                         <div class="row-data web">Kualitas</div>
@@ -107,7 +107,6 @@
         All rights reserved.</p>
     </div>
     <script src="./js/app.js"></script>
-    <script src="./js/cart.js"></script>
     <script>
       if(userToken === null) {
             history.back()
@@ -117,39 +116,39 @@
       if (localStorage.getItem('product-title') && localStorage.getItem('product-price')) {
         containerItems.innerHTML += `<div class="row-child">
                         <div class="row-data">
-                            <input type="checkbox" style="margin-right: 5px;">
+                            <input type="checkbox" style="margin-right: 5px;" id="button-check-item">
                             <img src="${localStorage.getItem('product-img')}" width="55px" alt="" style="margin-right: 10px;">
                             <span class="web">${localStorage.getItem('product-title')}</span>
                             <div class="complicated mobile">
                                 <div style="margin-bottom: 10px;">
                                     <p style="line-height: 15px;">${localStorage.getItem('product-title')}</span>
-                                    <p class="red-color" style="font-size: 20px; line-height: 0px;">${localStorage.getItem('product-price')}</span>
+                                    <p id="cart-price-total" class="red-color" style="font-size: 20px; line-height: 0px;">${localStorage.getItem('product-price')}</span>
                                 </div>
                                 <div>
-                                    <button class="button-cart" id="button-cart-mobile">-</button>
-                                    <span id="count">1</span>
-                                    <button class="button-cart" id="button-cart-mobile">+</button>
+                                    <button class="button-cart" id="button-cart">-</button>
+                                    <span id="count">${localStorage.getItem('product-qty')}</span>
+                                    <button class="button-cart" id="button-cart">+</button>
                                 </div>  
                             </div>
                         </div>
                         <div class="row-data web">
                             <button class="button-cart" id="button-cart">-</button>
-                            <span id="count">1</span>
+                            <span id="count">${localStorage.getItem('product-qty')}</span>
                             <button class="button-cart" id="button-cart">+</button>
                         </div>
-                        <div class="row-data web">${localStorage.getItem('product-price')}</div>
+                        <div class="row-data web" id="cart-price-total">${localStorage.getItem('product-price')}</div>
                     </div>`
 
         checkoutCard.innerHTML += `
                         <p>checkout</p>
                         <div class="subtotal-cart">
                             <p>subtotal</p>
-                            <p>${localStorage.getItem('product-price')}</p>
+                            <p id="checkout-price-total">${localStorage.getItem('product-price')}</p>
                         </div>
                         <hr>
                         <div class="total-cart">
                             <p><b>Total</b></p>
-                            <p>${localStorage.getItem('product-price')}</p>
+                            <p id="checkout-price-total">${localStorage.getItem('product-price')}</p>
                         </div>
                         <hr>
                         <a href="./checkout.html">
@@ -169,11 +168,13 @@
             tempCount++
             count.forEach(count => {
               count.innerText = String(tempCount)
+              localStorage.setItem('product-qty', Number(tempCount))
             })
           } else if (button.innerText === '-') {
             tempCount--
             count.forEach(count => {
               count.innerText = String(tempCount)
+              localStorage.setItem('product-qty', Number(tempCount))
             })
           }
 
@@ -181,9 +182,40 @@
             tempCount = 0
             count.forEach(count => {
               count.innerText = String(tempCount)
+              localStorage.setItem('product-qty', Number(tempCount))
             })
           }
+        })
+      })
 
+      const checkAll = document.querySelector('#button-check-all')
+      const checkItem = document.querySelector('#button-check-item')
+
+      checkAll.addEventListener('change', () => {
+        if(checkAll.checked == true) {
+          checkItem.checked = true
+        } else {
+          checkItem.checked = false
+        }
+      })
+
+      const checkoutPriceTotal = document.querySelectorAll("#checkout-price-total")
+      const cartPriceTotal = document.querySelectorAll("#cart-price-total")
+
+      count.forEach((value) => {
+        let tempPrice = Number(localStorage.getItem('product-price').split('Rp. ')[1].split('.').join(''))
+        buttonCart.forEach((button) => {
+          button.addEventListener('click', () => {
+            const newPrice = tempPrice * Number(value.innerText)
+            checkoutPriceTotal.forEach(price => {
+              price.innerText = `Rp. ${newPrice}`
+              localStorage.setItem('product-price', `Rp. ${newPrice}`)
+            })
+            cartPriceTotal.forEach(price => {
+              price.innerText = `Rp. ${newPrice}`
+              localStorage.setItem('product-price', `Rp. ${newPrice}`)
+            })
+          })
         })
       })
     </script>
